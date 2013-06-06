@@ -87,7 +87,7 @@ public class ExtUltimateThreadGroup
             int numThreadsPrev = pendingThreads.size();
             int numThreadsCurr = currentRecord.get(1).getIntValue();
 
-            for (int i = numThreadsPrev; i < numThreadsCurr; i++) {
+            for (int i = numThreadsPrev + 1; i <= numThreadsCurr; i++) {
                 JMeterThread jmThread = threads.get(threadIndex++);
                 long ascentPoint = tgStartTime + 1000 * timePrev;
                 int rampUpDelayForThread = (int) Math.floor(1000 * (timeCurr - timePrev) * (double) (i - numThreadsPrev) / (numThreadsCurr - numThreadsPrev));

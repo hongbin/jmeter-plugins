@@ -22,6 +22,7 @@ import kg.apc.charting.DateTimeRenderer;
 import kg.apc.charting.GraphPanelChart;
 import kg.apc.charting.rows.GraphRowSumValues;
 import kg.apc.jmeter.gui.ButtonPanelAddCopyRemove;
+import kg.apc.jmeter.gui.ExtButtonPanelAddCopyRemove;
 import kg.apc.jmeter.gui.GuiBuilderHelper;
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.control.gui.LoopControlPanel;
@@ -64,15 +65,18 @@ public class ExtUltimateThreadGroupGui
      *
      */
     public static final Class[] columnClasses = new Class[]{
-        String.class, String.class
+        Integer.class, Integer.class
     };
-    public static final Integer[] defaultValues = new Integer[]{
+    public static final Integer[] initValues = new Integer[]{
         0, 100
+    };
+    public static final Integer[] incValues = new Integer[]{
+        60, 0
     };
     private LoopControlPanel loopPanel;
     protected PowerTableModel tableModel;
     protected JTable grid;
-    protected ButtonPanelAddCopyRemove buttons;
+    protected ExtButtonPanelAddCopyRemove buttons;
 
     /**
      *
@@ -105,7 +109,7 @@ public class ExtUltimateThreadGroupGui
         JScrollPane scroll = new JScrollPane(createGrid());
         scroll.setPreferredSize(scroll.getMinimumSize());
         panel.add(scroll, BorderLayout.CENTER);
-        buttons = new ButtonPanelAddCopyRemove(grid, tableModel, defaultValues);
+        buttons = new ExtButtonPanelAddCopyRemove(grid, tableModel, initValues, incValues);
         panel.add(buttons, BorderLayout.SOUTH);
 
         return panel;
