@@ -45,6 +45,7 @@
         <cmdrunner-version>1.0.1</cmdrunner-version>
         <selenium.version>2.32.0</selenium.version>
         <powermock.version>1.5</powermock.version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <repositories>
