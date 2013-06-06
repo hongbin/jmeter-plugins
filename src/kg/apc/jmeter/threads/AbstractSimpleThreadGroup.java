@@ -6,6 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.engine.TreeCloner;
+import org.apache.jmeter.testelement.property.CollectionProperty;
 import org.apache.jmeter.threads.AbstractThreadGroup;
 import org.apache.jmeter.threads.JMeterContext;
 import org.apache.jmeter.threads.JMeterContextService;
@@ -24,14 +25,14 @@ public abstract class AbstractSimpleThreadGroup extends AbstractThreadGroup {
     // List of active threads
     private final Map<JMeterThread, Thread> allThreads = new ConcurrentHashMap<JMeterThread, Thread>();
 
-    /**
-     * Is test (still) running?
-     */
-    private volatile boolean running = false;
-
     //JMeter 2.7 Compatibility
     private long tgStartTime = -1;
     private final long tolerance = 1000;
+
+    /**
+     * Is test (still) running?
+     */
+    protected volatile boolean running = false;
 
 
     /**
@@ -73,11 +74,11 @@ public abstract class AbstractSimpleThreadGroup extends AbstractThreadGroup {
         log.info("Started thread group number "+groupCount);
     }
 
-    private void registerStartedThread(JMeterThread jMeterThread, Thread newThread) {
+    protected void registerStartedThread(JMeterThread jMeterThread, Thread newThread) {
         allThreads.put(jMeterThread, newThread);
     }
 
-    private JMeterThread makeThread(int groupCount,
+    protected JMeterThread makeThread(int groupCount,
             ListenerNotifier notifier, ListedHashTree threadGroupTree,
             StandardJMeterEngine engine, int i,
             JMeterContext context) { // N.B. Context needs to be fetched in the correct thread
