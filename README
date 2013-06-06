@@ -5,6 +5,11 @@ This library contains additional plugins for Apache JMeter Tool.
 See project site here: http://code.google.com/p/jmeter-plugins/
 
 2. Installation and Usage
+```
+git clone git://github.com/hongbin/jmeter-plugins.git
+cd jmeter-plugins
+mvn clean package
+```
 Just copy the JAR file into JMeter's lib/ext directory.
 Then you can start JMeter and add additional items to your Test Plan.
 Java version 1.6 and JMeter 2.4 are required.
