@@ -47,7 +47,7 @@ public class ExtAddRowAction
             System.arraycopy(lastRow, 0, newRow, 0, n);
         }
         for (int i = 0; i < newRow.length; i++) {
-            newRow[i] = (Integer) newRow[i] + incValues[i];
+            newRow[i] = Integer.parseInt(newRow[i].toString()) + incValues[i];
         }
         tableModel.addRow(newRow);
         tableModel.fireTableDataChanged();
